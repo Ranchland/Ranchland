@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranchland - A New Ranch. A Better Ranch. The Best Ranch.</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Ranchland creates premium ranch dressing that revolutionizes the way you think about ranch. A new ranch. A better ranch. The best ranch.">
+    <meta name="keywords" content="ranch dressing, premium ranch, artisanal ranch, best ranch dressing, gourmet condiments, Ranchland">
+    <meta name="author" content="Ranchland">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ranchland.com/">
+    <meta property="og:title" content="Ranchland - A New Ranch. A Better Ranch. The Best Ranch.">
+    <meta property="og:description" content="Premium ranch dressing that revolutionizes the way you think about ranch.">
+    <meta property="og:image" content="https://ranchland.com/images/ranchland-bottle.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://ranchland.com/">
+    <meta property="twitter:title" content="Ranchland - A New Ranch. A Better Ranch. The Best Ranch.">
+    <meta property="twitter:description" content="Premium ranch dressing that revolutionizes the way you think about ranch.">
+    <meta property="twitter:image" content="https://ranchland.com/images/ranchland-bottle.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-green: #2D5016;
+            --light-green: #4A7C59;
+            --cream: #F5F3F0;
+            --off-white: #FEFCFA;
+            --dark-text: #1a1a1a;
+            --medium-text: #4a4a4a;
+            --light-text: #7a7a7a;
+            --border-color: #e5e5e5;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background: var(--off-white);
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Animated Ranch Stream Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: linear-gradient(135deg, #F5F3F0 0%, #FEFCFA 100%);
+        }
+        
+        body::after {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            z-index: -1;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(245, 243, 240, 0.6) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(254, 252, 250, 0.8) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(245, 243, 240, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 90% 70%, rgba(254, 252, 250, 0.6) 0%, transparent 50%),
+                radial-gradient(circle at 10% 90%, rgba(245, 243, 240, 0.5) 0%, transparent 50%);
+            animation: ranchFlow 20s ease-in-out infinite;
+        }
+        
+        @keyframes ranchFlow {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg) scale(1);
+            }
+            25% {
+                transform: translate(-5%, -10%) rotate(1deg) scale(1.1);
+            }
+            50% {
+                transform: translate(10%, -5%) rotate(-1deg) scale(0.9);
+            }
+            75% {
+                transform: translate(-2%, 8%) rotate(0.5deg) scale(1.05);
+            }
+        }
+        
+        /* Ranch Drip Animation */
+        .ranch-drips {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .ranch-drip {
+            position: absolute;
+            background: linear-gradient(180deg, 
+                rgba(254, 252, 250, 0.8) 0%, 
+                rgba(245, 243, 240, 0.6) 50%, 
+                rgba(254, 252, 250, 0.4) 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: drip linear infinite;
+        }
+        
+        .ranch-drip:nth-child(1) {
+            left: 10%;
+            width: 8px;
+            height: 40px;
+            animation-duration: 8s;
+            animation-delay: 0s;
+        }
+        
+        .ranch-drip:nth-child(2) {
+            left: 25%;
+            width: 12px;
+            height: 60px;
+            animation-duration: 12s;
+            animation-delay: 2s;
+        }
+        
+        .ranch-drip:nth-child(3) {
+            left: 45%;
+            width: 6px;
+            height: 30px;
+            animation-duration: 10s;
+            animation-delay: 4s;
+        }
+        
+        .ranch-drip:nth-child(4) {
+            left: 65%;
+            width: 10px;
+            height: 50px;
+            animation-duration: 15s;
+            animation-delay: 1s;
+        }
+        
+        .ranch-drip:nth-child(5) {
+            left: 80%;
+            width: 7px;
+            height: 35px;
+            animation-duration: 9s;
+            animation-delay: 6s;
+        }
+        
+        .ranch-drip:nth-child(6) {
+            left: 90%;
+            width: 9px;
+            height: 45px;
+            animation-duration: 11s;
+            animation-delay: 3s;
+        }
+        
+        @keyframes drip {
+            0% {
+                top: -60px;
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                top: 100vh;
+                opacity: 0;
+            }
+        }
+        
+        /* Floating Ranch Particles */
+        .ranch-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .ranch-particle {
+            position: absolute;
+            background: radial-gradient(circle, rgba(254, 252, 250, 0.4) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float linear infinite;
+        }
+        
+        .ranch-particle:nth-child(1) {
+            left: 15%;
+            width: 20px;
+            height: 20px;
+            animation-duration: 25s;
+            animation-delay: 0s;
+        }
+        
+        .ranch-particle:nth-child(2) {
+            left: 35%;
+            width: 15px;
+            height: 15px;
+            animation-duration: 30s;
+            animation-delay: 5s;
+        }
+        
+        .ranch-particle:nth-child(3) {
+            left: 55%;
+            width: 25px;
+            height: 25px;
+            animation-duration: 20s;
+            animation-delay: 10s;
+        }
+        
+        .ranch-particle:nth-child(4) {
+            left: 75%;
+            width: 18px;
+            height: 18px;
+            animation-duration: 35s;
+            animation-delay: 15s;
+        }
+        
+        @keyframes float {
+            0% {
+                top: 100vh;
+                opacity: 0;
+                transform: translateX(0) scale(0);
+            }
+            10% {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+            50% {
+                transform: translateX(100px) scale(1.2);
+            }
+            90% {
+                opacity: 1;
+                transform: translateX(-50px) scale(0.8);
+            }
+            100% {
+                top: -60px;
+                opacity: 0;
+                transform: translateX(0) scale(0);
+            }
+        }
+        
+        /* Enhanced section backgrounds with ranch theme */
+        .hero {
+            background: linear-gradient(135deg, 
+                rgba(245, 243, 240, 0.95) 0%, 
+                rgba(254, 252, 250, 0.9) 50%,
+                rgba(245, 243, 240, 0.95) 100%);
+            position: relative;
+        }
+        
+        .about {
+            background: linear-gradient(135deg, 
+                rgba(254, 252, 250, 0.9) 0%, 
+                rgba(245, 243, 240, 0.85) 100%);
+            position: relative;
+        }
+        
+        .story {
+            background: linear-gradient(135deg, 
+                rgba(245, 243, 240, 0.8) 0%, 
+                rgba(254, 252, 250, 0.9) 100%);
+            position: relative;
+        }
+        
+        .product {
+            background: linear-gradient(135deg, 
+                rgba(254, 252, 250, 0.95) 0%, 
+                rgba(245, 243, 240, 0.9) 100%);
+            position: relative;
+        }
+        
+        /* Ranch texture overlay for sections */
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 30% 30%, rgba(254, 252, 250, 0.3) 0%, transparent 40%),
+                radial-gradient(circle at 70% 70%, rgba(245, 243, 240, 0.2) 0%, transparent 40%),
+                radial-gradient(circle at 90% 10%, rgba(254, 252, 250, 0.25) 0%, transparent 30%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .section > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Navigation */
+        .nav-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(254, 252, 250, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+        }
+        
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-green);
+        }
+        
+        .pre-order-btn {
+            background: var(--primary-green);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .pre-order-btn:hover {
+            background: var(--light-green);
+            transform: translateY(-1px);
+        }
+        
+        /* Mobile Navigation */
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Main Content */
+        main {
+            margin-top: 80px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, 
+                rgba(245, 243, 240, 0.95) 0%, 
+                rgba(254, 252, 250, 0.9) 50%,
+                rgba(245, 243, 240, 0.95) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(ellipse at 20% 30%, rgba(254, 252, 250, 0.6) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 70%, rgba(245, 243, 240, 0.4) 0%, transparent 50%),
+                radial-gradient(ellipse at 60% 20%, rgba(254, 252, 250, 0.3) 0%, transparent 40%);
+            animation: heroRanchFlow 15s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        @keyframes heroRanchFlow {
+            0%, 100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.1) rotate(2deg);
+                opacity: 0.8;
+            }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .hero-text h1 {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--dark-text);
+            letter-spacing: -0.02em;
+        }
+        
+        .hero-text .motto {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--primary-green);
+            font-weight: 500;
+            margin-bottom: 2rem;
+            font-style: italic;
+            letter-spacing: 0.02em;
+        }
+        
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--medium-text);
+            margin-bottom: 2.5rem;
+            max-width: 500px;
+        }
+        
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        
+        .hero-image img {
+            max-width: 750px;
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 20px 40px rgba(45, 80, 22, 0.15));
+            mask: radial-gradient(ellipse at center, black 45%, rgba(0,0,0,0.8) 65%, transparent 90%);
+            -webkit-mask: radial-gradient(ellipse at center, black 45%, rgba(0,0,0,0.8) 65%, transparent 90%);
+            border-radius: 20px;
+        }
+        
+        /* Sections */
+        .section {
+            padding: 5rem 0;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--dark-text);
+        }
+        
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--medium-text);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* About Section */
+        .about {
+            background: var(--off-white);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .about-text h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--primary-green);
+        }
+        
+        .about-text p {
+            font-size: 1.05rem;
+            color: var(--medium-text);
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Story Section */
+        .story {
+            background: var(--cream);
+        }
+        
+        .story-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+        
+        .story-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .story-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary-green);
+        }
+        
+        .story-card p {
+            color: var(--medium-text);
+            font-size: 1rem;
+        }
+        
+        /* Product Section */
+        .product {
+            background: var(--off-white);
+        }
+        
+        .product-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .product-image {
+            text-align: center;
+            position: relative;
+        }
+        
+        .product-image img {
+            max-width: 450px;
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 15px 30px rgba(45, 80, 22, 0.1));
+            mask: radial-gradient(ellipse at center, black 70%, transparent 100%);
+            -webkit-mask: radial-gradient(ellipse at center, black 70%, transparent 100%);
+        }
+        
+        .product-info h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: var(--dark-text);
+        }
+        
+        .product-info p {
+            font-size: 1.1rem;
+            color: var(--medium-text);
+            margin-bottom: 2rem;
+        }
+        
+        .product-features {
+            list-style: none;
+            margin-bottom: 2.5rem;
+        }
+        
+        .product-features li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--medium-text);
+        }
+        
+        .product-features li:last-child {
+            border-bottom: none;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background: var(--primary-green);
+            color: white;
+        }
+        
+        .contact .section-header h2,
+        .contact .section-header p {
+            color: white;
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-info p {
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+        
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark-text);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        footer p {
+            opacity: 0.8;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero-content,
+            .about-content,
+            .product-showcase,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .hero-text {
+                text-align: center;
+                order: 2;
+            }
+            
+            .hero-image {
+                order: 1;
+            }
+            
+            .hero-image img {
+                max-width: 500px;
+            }
+            
+            .product-image img {
+                max-width: 350px;
+            }
+            
+            .section {
+                padding: 3rem 0;
+            }
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Loading animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="nav-container">
+        <nav>
+            <a href="#home" class="logo">RANCHLAND</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#story">Our Story</a></li>
+                <li><a href="#product">Product</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSf2QqQKTgF_YourFormID/viewform" 
+               class="pre-order-btn" target="_blank" rel="noopener">Pre-Order</a>
+            <button class="mobile-menu">☰</button>
+        </nav>
+    </div>
+
+    <main>
+        <!-- Animated Ranch Background Elements -->
+        <div class="ranch-drips">
+            <div class="ranch-drip"></div>
+            <div class="ranch-drip"></div>
+            <div class="ranch-drip"></div>
+            <div class="ranch-drip"></div>
+            <div class="ranch-drip"></div>
+            <div class="ranch-drip"></div>
+        </div>
+        
+        <div class="ranch-particles">
+            <div class="ranch-particle"></div>
+            <div class="ranch-particle"></div>
+            <div class="ranch-particle"></div>
+            <div class="ranch-particle"></div>
+        </div>
+
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <div class="hero-text fade-in">
+                    <h1>The Ranch Revolution Starts Here</h1>
+                    <p class="motto">A new ranch. A better ranch. The best ranch.</p>
+                    <p>We're not just another ranch company. We're dismantling Big Ranch, one bottle at a time. 
+                       Experience ranch the way it was meant to be—bold, authentic, and unapologetically better.</p>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSf2QqQKTgF_YourFormID/viewform" 
+                       class="pre-order-btn" target="_blank" rel="noopener">Pre-Order Now</a>
+                </div>
+                <div class="hero-image fade-in">
+                    <img src="ranchHero.png" alt="Ranchland Premium Ranch Dressing - Ranch Valley Landscape">
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section about">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2>We Are Ranch Guys</h2>
+                    <p>Through and through. No compromises, no shortcuts, no mediocrity.</p>
+                </div>
+                <div class="about-content">
+                    <div class="about-text fade-in">
+                        <h3>The Mission</h3>
+                        <p>We're former tech guys who got tired of the ranch industrial complex. Tired of watery, 
+                           artificial ranch that tastes like disappointment in a bottle.</p>
+                        <p>So we did what any rational people would do: we quit our jobs, bought a ranch, 
+                           and started a revolution. A ranch revolution.</p>
+                        <p>This isn't just about condiments. This is about taking back what ranch was supposed 
+                           to be—rich, creamy, bold, and made with ingredients you can actually pronounce.</p>
+                    </div>
+                    <div class="about-text fade-in">
+                        <h3>The Promise</h3>
+                        <p>Every bottle of Ranchland is a declaration of war against mediocre ranch. 
+                           We're not playing it safe. We're not following trends.</p>
+                        <p>We're creating ranch the way it should be: with obsessive attention to texture, 
+                           flavor, and that perfect creamy consistency that makes everything better.</p>
+                        <p>Big Ranch has had their day. This is ours.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Story Section -->
+        <section id="story" class="section story">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2>Our Story</h2>
+                    <p>From Silicon Valley to ranch valley—the journey to the perfect bottle.</p>
+                </div>
+                <div class="story-grid">
+                    <div class="story-card fade-in">
+                        <h3>The Awakening</h3>
+                        <p>It started with a grocery store meltdown. Standing in the condiment aisle, 
+                           staring at rows of identical ranch bottles, we realized: this is broken. 
+                           Ranch had become a commodity, not a craft.</p>
+                    </div>
+                    <div class="story-card fade-in">
+                        <h3>The Exodus</h3>
+                        <p>We left our tech jobs, liquidated our stock options, and bought land. 
+                           Not for the Instagram posts or the romantic idea of ranch life—but because 
+                           we knew real ranch starts with real ingredients.</p>
+                    </div>
+                    <div class="story-card fade-in">
+                        <h3>The Obsession</h3>
+                        <p>For months, we tested. Hundreds of batches. Different herbs, different ratios, 
+                           different techniques. We didn't stop until we had ranch that made us emotional. 
+                           Ranch that changed us.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Section -->
+        <section id="product" class="section product">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2>The Bottle</h2>
+                    <p>16 fluid ounces of everything ranch should be.</p>
+                </div>
+                <div class="product-showcase">
+                    <div class="product-image fade-in">
+                        <img src="IMG_1196.png" alt="Ranchland Ranch Dressing 16oz Bottle">
+                    </div>
+                    <div class="product-info fade-in">
+                        <h3>Premium Ranch Dressing</h3>
+                        <p>Our flagship product. The ranch that started the revolution. 
+                           Rich, creamy, and packed with flavor that makes everything taste better.</p>
+                        
+                        <ul class="product-features">
+                            <li><strong>16 FL OZ (473mL)</strong> - Perfect size for ranch enthusiasts</li>
+                            <li><strong>All Natural Ingredients</strong> - No artificial preservatives or fillers</li>
+                            <li><strong>Small Batch Crafted</strong> - Made in limited quantities for maximum quality</li>
+                            <li><strong>Premium Texture</strong> - Thick, creamy consistency that clings perfectly</li>
+                            <li><strong>Bold Flavor Profile</strong> - Herb-forward with the perfect tang</li>
+                        </ul>
+                        
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSf2QqQKTgF_YourFormID/viewform" 
+                           class="pre-order-btn" target="_blank" rel="noopener">Pre-Order Your Bottle</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2>Get In Touch</h2>
+                    <p>Ready to join the ranch revolution? We're here to help.</p>
+                </div>
+                <div class="contact-content">
+                    <div class="contact-info fade-in">
+                        <h3>Contact Information</h3>
+                        <p><strong>Email:</strong> <a href="mailto:ranchland.shop@gmail.com">ranchland.shop@gmail.com</a></p>
+                        <p><strong>Phone:</strong> <a href="tel:+18484481230">(848) 448-1230</a></p>
+                        <p><strong>Business Hours:</strong> Monday - Friday, 9AM - 6PM EST</p>
+                    </div>
+                    <div class="contact-info fade-in">
+                        <h3>Pre-Orders & Inquiries</h3>
+                        <p>Ready to experience the best ranch you've ever tasted? Pre-order your bottles now 
+                           and be among the first to taste the revolution.</p>
+                        <p>For wholesale inquiries, partnership opportunities, or just to tell us how much 
+                           you love our ranch, don't hesitate to reach out.</p>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSf2QqQKTgF_YourFormID/viewform" 
+                           class="pre-order-btn" target="_blank" rel="noopener" 
+                           style="background: white; color: var(--primary-green); margin-top: 1rem;">
+                           Pre-Order Form
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Ranchland. All rights reserved. A new ranch. A better ranch. The best ranch.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Mobile menu functionality (basic)
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '80px';
+                navLinks.style.left = '0';
+                navLinks.style.right = '0';
+                navLinks.style.background = 'white';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.padding = '2rem';
+                navLinks.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+                navLinks.style.zIndex = '999';
+            }
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    navLinks.style.display = 'none';
+                }
+            });
+        });
+
+        // Update pre-order form URL (replace with your actual Google Form URL)
+        document.querySelectorAll('a[href*="google.com/forms"]').forEach(link => {
+            // Replace this URL with your actual Google Form URL
+            link.href = 'https://docs.google.com/forms/d/e/1FAIpQLSdYourActualFormID/viewform';
+        });
+
+        // Add loading state for pre-order buttons
+        document.querySelectorAll('.pre-order-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const originalText = this.textContent;
+                this.textContent = 'Loading...';
+                setTimeout(() => {
+                    this.textContent = originalText;
+                }, 1000);
+            });
+        });
+
+        // Enhanced scroll effects
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const navbar = document.querySelector('.nav-container');
+            
+            if (scrolled > 100) {
+                navbar.style.background = 'rgba(254, 252, 250, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.background = 'rgba(254, 252, 250, 0.95)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        // Add structured data for SEO
+        const structuredData = {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Ranchland",
+            "description": "Premium ranch dressing that revolutionizes the way you think about ranch. A new ranch. A better ranch. The best ranch.",
+            "url": "https://ranchland.com",
+            "logo": "https://ranchland.com/images/ranchland-logo.svg",
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+1-848-448-1230",
+                "contactType": "customer service",
+                "email": "ranchland.shop@gmail.com"
+            },
+            "sameAs": [
+                "https://instagram.com/ranchland",
+                "https://twitter.com/ranchland"
+            ]
+        };
+
+        const script = document.createElement('script');
+        script.type = 'application/ld+json';
+        script.textContent = JSON.stringify(structuredData);
+        document.head.appendChild(script);
+    </script>
+</body>
+</html>
