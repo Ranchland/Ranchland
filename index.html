@@ -60,6 +60,57 @@
             overflow-x: hidden;
         }
         
+        /* Image Loading Optimization */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            loading: lazy;
+            decoding: async;
+        }
+        
+        img[src*="hero"], img[src*="Hero"] {
+            loading: eager;
+        }
+        
+        /* Image Loading States */
+        .image-container {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .image-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #f3f3f3 25%, transparent 25%), 
+                        linear-gradient(-45deg, #f3f3f3 25%, transparent 25%), 
+                        linear-gradient(45deg, transparent 75%, #f3f3f3 75%), 
+                        linear-gradient(-45deg, transparent 75%, #f3f3f3 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+            opacity: 0.1;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .image-container img {
+            position: relative;
+            z-index: 2;
+            transition: opacity 0.3s ease;
+        }
+        
+        .image-container img.loading {
+            opacity: 0;
+        }
+        
+        .image-container img.loaded {
+            opacity: 1;
+        }
+        
         /* Animated Ranch Stream Background */
         body::before {
             content: '';
@@ -366,23 +417,51 @@
             color: var(--primary-green);
         }
         
+        /* Enhanced Pre-Order Button - Desktop & Mobile Responsive */
         .pre-order-btn {
             background: var(--primary-green);
             color: white;
-            padding: 0.75rem 1.5rem;
+            padding: 0.6rem 1.2rem;
             border: none;
             border-radius: 6px;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+            min-width: fit-content;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pre-order-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
         }
         
         .pre-order-btn:hover {
             background: var(--light-green);
             transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(45, 80, 22, 0.3);
+        }
+        
+        .pre-order-btn:hover::before {
+            left: 100%;
+        }
+        
+        .pre-order-btn:active {
+            transform: translateY(0);
         }
         
         /* Mobile Navigation */
@@ -392,6 +471,9 @@
             border: none;
             font-size: 1.5rem;
             cursor: pointer;
+            color: var(--dark-text);
+            padding: 0.5rem;
+            margin-left: 1rem;
         }
         
         /* Main Content */
@@ -687,13 +769,49 @@
         }
         
         /* Responsive Design */
+        @media (max-width: 980px) {
+            nav {
+                padding: 0 1.5rem;
+            }
+            
+            .logo {
+                font-size: 1.75rem;
+            }
+            
+            .nav-links {
+                gap: 1.5rem;
+            }
+            
+            .pre-order-btn {
+                padding: 0.55rem 1rem;
+                font-size: 0.8rem;
+            }
+        }
+        
         @media (max-width: 768px) {
+            nav {
+                padding: 0 1rem;
+                justify-content: space-between;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+                flex-shrink: 0;
+            }
+            
             .nav-links {
                 display: none;
             }
             
             .mobile-menu {
                 display: block;
+            }
+            
+            .pre-order-btn {
+                padding: 0.5rem 0.8rem;
+                font-size: 0.75rem;
+                margin-left: auto;
+                margin-right: 0.5rem;
             }
             
             .hero-content,
@@ -726,6 +844,31 @@
             }
         }
         
+        @media (max-width: 480px) {
+            nav {
+                height: 70px;
+                padding: 0 0.75rem;
+            }
+            
+            main {
+                margin-top: 70px;
+            }
+            
+            .logo {
+                font-size: 1.25rem;
+            }
+            
+            .pre-order-btn {
+                padding: 0.45rem 0.7rem;
+                font-size: 0.7rem;
+                border-radius: 4px;
+            }
+            
+            .container {
+                padding: 0 1rem;
+            }
+        }
+        
         /* Smooth scrolling */
         html {
             scroll-behavior: smooth;
@@ -741,6 +884,33 @@
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+        
+        /* Enhanced Loading States */
+        .loading-skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+        
+        @keyframes loading {
+            0% {
+                background-position: 200% 0;
+            }
+            100% {
+                background-position: -200% 0;
+            }
+        }
+        
+        /* Critical Resource Hints */
+        .hero-image img {
+            content-visibility: auto;
+            contain-intrinsic-size: 750px 500px;
+        }
+        
+        .product-image img {
+            content-visibility: auto;
+            contain-intrinsic-size: 450px 600px;
         }
     </style>
 </head>
@@ -792,7 +962,9 @@
                        class="pre-order-btn" target="_blank" rel="noopener">Pre-Order Now</a>
                 </div>
                 <div class="hero-image fade-in">
-                    <img src="ranchHero.png" alt="Ranchland Premium Ranch Dressing - Ranch Valley Landscape">
+                    <div class="image-container">
+                        <img src="ranchHero.png" alt="Ranchland Premium Ranch Dressing - Ranch Valley Landscape" class="loading">
+                    </div>
                 </div>
             </div>
         </section>
@@ -865,7 +1037,9 @@
                 </div>
                 <div class="product-showcase">
                     <div class="product-image fade-in">
-                        <img src="IMG_1196.png" alt="Ranchland Ranch Dressing 16oz Bottle">
+                        <div class="image-container">
+                            <img src="IMG_1196.png" alt="Ranchland Ranch Dressing 16oz Bottle" class="loading">
+                        </div>
                     </div>
                     <div class="product-info fade-in">
                         <h3>Premium Ranch Dressing</h3>
@@ -926,6 +1100,80 @@
     </footer>
 
     <script>
+        // Image Loading Optimization
+        function handleImageLoad() {
+            const images = document.querySelectorAll('img.loading');
+            
+            images.forEach(img => {
+                if (img.complete) {
+                    img.classList.remove('loading');
+                    img.classList.add('loaded');
+                } else {
+                    img.addEventListener('load', () => {
+                        img.classList.remove('loading');
+                        img.classList.add('loaded');
+                    });
+                    
+                    img.addEventListener('error', () => {
+                        img.classList.remove('loading');
+                        img.style.opacity = '0.3';
+                        console.warn('Failed to load image:', img.src);
+                    });
+                }
+            });
+        }
+
+        // Intersection Observer for better performance
+        const createObserver = (callback, options = {}) => {
+            const defaultOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px',
+                ...options
+            };
+            
+            return new IntersectionObserver(callback, defaultOptions);
+        };
+
+        // Lazy load images
+        const imageObserver = createObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                        imageObserver.unobserve(img);
+                    }
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const fadeObserver = createObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    fadeObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        // Initialize observers
+        document.addEventListener('DOMContentLoaded', () => {
+            // Handle image loading
+            handleImageLoad();
+            
+            // Observe fade-in elements
+            document.querySelectorAll('.fade-in').forEach(el => {
+                fadeObserver.observe(el);
+            });
+            
+            // Observe lazy images
+            document.querySelectorAll('img[data-src]').forEach(el => {
+                imageObserver.observe(el);
+            });
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -940,40 +1188,40 @@
             });
         });
 
-        // Fade in animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Mobile menu functionality (basic)
+        // Enhanced Mobile menu functionality
         const mobileMenu = document.querySelector('.mobile-menu');
         const navLinks = document.querySelector('.nav-links');
+        let mobileMenuOpen = false;
 
-        mobileMenu.addEventListener('click', () => {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-            if (navLinks.style.display === 'flex') {
+        mobileMenu.addEventListener('click', (e) => {
+            e.stopPropagation();
+            mobileMenuOpen = !mobileMenuOpen;
+            
+            if (mobileMenuOpen) {
+                navLinks.style.display = 'flex';
                 navLinks.style.position = 'absolute';
-                navLinks.style.top = '80px';
+                navLinks.style.top = '100%';
                 navLinks.style.left = '0';
                 navLinks.style.right = '0';
-                navLinks.style.background = 'white';
+                navLinks.style.background = 'rgba(254, 252, 250, 0.98)';
                 navLinks.style.flexDirection = 'column';
                 navLinks.style.padding = '2rem';
                 navLinks.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
                 navLinks.style.zIndex = '999';
+                navLinks.style.backdropFilter = 'blur(10px)';
+                mobileMenu.innerHTML = '✕';
+            } else {
+                navLinks.style.display = 'none';
+                mobileMenu.innerHTML = '☰';
+            }
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (mobileMenuOpen && !navLinks.contains(e.target) && !mobileMenu.contains(e.target)) {
+                navLinks.style.display = 'none';
+                mobileMenu.innerHTML = '☰';
+                mobileMenuOpen = false;
             }
         });
 
@@ -982,29 +1230,16 @@
             link.addEventListener('click', () => {
                 if (window.innerWidth <= 768) {
                     navLinks.style.display = 'none';
+                    mobileMenu.innerHTML = '☰';
+                    mobileMenuOpen = false;
                 }
             });
         });
 
-        // Update pre-order form URL (replace with your actual Google Form URL)
-        document.querySelectorAll('a[href*="google.com/forms"]').forEach(link => {
-            // Replace this URL with your actual Google Form URL
-            link.href = 'https://forms.gle/yqRbYs7a3Bn2Lbmj8';
-        });
+        // Enhanced scroll effects with throttling
+        let ticking = false;
 
-        // Add loading state for pre-order buttons
-        document.querySelectorAll('.pre-order-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                const originalText = this.textContent;
-                this.textContent = 'Loading...';
-                setTimeout(() => {
-                    this.textContent = originalText;
-                }, 1000);
-            });
-        });
-
-        // Enhanced scroll effects
-        window.addEventListener('scroll', () => {
+        function updateNavbar() {
             const scrolled = window.pageYOffset;
             const navbar = document.querySelector('.nav-container');
             
@@ -1015,7 +1250,39 @@
                 navbar.style.background = 'rgba(254, 252, 250, 0.95)';
                 navbar.style.boxShadow = 'none';
             }
+            
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(updateNavbar);
+                ticking = true;
+            }
         });
+
+        // Enhanced pre-order button interactions
+        document.querySelectorAll('.pre-order-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const originalText = this.textContent;
+                this.style.transform = 'scale(0.98)';
+                
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+
+        // Performance optimization: Reduce motion for users who prefer it
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        
+        if (prefersReducedMotion.matches) {
+            document.body.style.setProperty('--animation-duration', '0.01ms');
+            document.querySelectorAll('*').forEach(el => {
+                el.style.animationDuration = '0.01ms';
+                el.style.transitionDuration = '0.01ms';
+            });
+        }
 
         // Add structured data for SEO
         const structuredData = {
@@ -1041,6 +1308,15 @@
         script.type = 'application/ld+json';
         script.textContent = JSON.stringify(structuredData);
         document.head.appendChild(script);
+
+        // Error handling for missing images
+        window.addEventListener('error', (e) => {
+            if (e.target.tagName === 'IMG') {
+                console.warn('Image failed to load:', e.target.src);
+                e.target.style.opacity = '0.3';
+                e.target.alt = 'Image temporarily unavailable';
+            }
+        }, true);
     </script>
 </body>
 </html>
