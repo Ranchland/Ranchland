@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -391,11 +392,21 @@
         }
         
         .logo {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--primary-green);
+            display: flex;
+            align-items: center;
             text-decoration: none;
-            letter-spacing: -0.02em;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .logo img {
+            height: 40px;
+            width: auto;
+            max-width: 150px;
+            object-fit: contain;
         }
         
         .nav-links {
@@ -774,8 +785,8 @@
                 padding: 0 1.5rem;
             }
             
-            .logo {
-                font-size: 1.75rem;
+            .logo img {
+                height: 25px;
             }
             
             .nav-links {
@@ -794,9 +805,8 @@
                 justify-content: space-between;
             }
             
-            .logo {
-                font-size: 1.5rem;
-                flex-shrink: 0;
+            .logo img {
+                height: 30px;
             }
             
             .nav-links {
@@ -854,8 +864,8 @@
                 margin-top: 70px;
             }
             
-            .logo {
-                font-size: 1.25rem;
+            .logo img {
+                height: 35px;
             }
             
             .pre-order-btn {
@@ -915,8 +925,8 @@
     </style>
 </head>
 <body>
-      <!-- Navigation -->
-      <div class="nav-container">
+    <!-- Navigation -->
+    <div class="nav-container">
         <nav>
             <a href="#home" class="logo">
                 <img src="logo.svg" alt="Ranchland Logo" loading="eager">
